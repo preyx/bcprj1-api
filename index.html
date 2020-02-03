@@ -1,0 +1,143 @@
+<html lang="en">
+
+<head></head>
+
+<body>&#8203;
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <title>Materialize CDN Search Movies</title>
+
+  <style>
+    .card {
+      padding: 5px;
+    }
+
+    select {
+      display: block;
+      border:1px solid #01574e !important;
+      /* border-radius: 1rem; */
+    }
+
+    .btn {
+      height: 43px;
+      border: 1px solid #000;
+      border-radius: 1.5rem;
+    }
+    label {
+    font-size: 2.8rem;
+    color: #9e9e9e;
+    }
+  </style>
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <form>
+        <header>
+          <!-- <label for="title" class="active">Bitcoin Price</label> -->
+          <!-- <input type="text" name="title" id="title" placeholder="$9814.0332"> -->
+          <label for="coinType" class="active">Select Crypto Type</label>
+          <select id="coinType" class="dropdown-trigger teal-text">
+            <option value="Bitcoin">Bitcoin</option>
+            <option value="LiteCoin">LiteCoin</option>
+            <option value="Etherium Classic">Etherium Classic</option>
+            <option value="Etherium Classic">Etherium Classic</option>
+            <option value="Etherium Lite">Etherium Lite</option>
+            <option value="Etherium Lite">Etherium Lite</option>
+            <option value="Etherium">Etherium</option>
+            <option value="Nio">Nio</option>
+            <option value="XRC">XRC</option>
+          </select>
+          </header>
+          
+        </p>
+      </form>
+      <button class="btn waves-effect waves-light btn-flat" id="searchMovie">Add to Your Watchlist</button>
+    </div>
+    <div class="row">
+      <div id="movie" class="col s6"></div>
+      <div class="col s6" id="watchlist">
+      </div>
+    </div>
+  </div>
+  <script>
+    let movie = {}
+    document.getElementById('searchMovie').addEventListener('click', event => {
+      event.preventDefault()
+      fetch(`http://www.omdbapi.com/?t=${document.getElementById('title').value}&apikey=trilogy`)
+        .then(r => r.json())
+        .then(({
+          Title,
+          Year,
+          Director,
+          Poster,
+          Plot
+        }) => {
+          movie = {
+            title: Title,
+            year: Year,
+            director: Director,
+            plot: Plot
+          }
+          document.getElementById('movie').innerHTML = `
+          <div class="card">
+            <div class="card-image">
+              <img src="${Poster}" alt="${Title}">
+              <span class="card-title">${Title}</span>
+            </div>
+            <div class="card-content">
+              <h4>Directed by ${Director}</h4>
+              <h5>Year: ${Year}</h5>
+              <p>${Plot}</p>
+            </div>
+            <div class="card-action">
+              <button class="btn waves-effect waves-light addWatchlist">Add To Watchlist</button>
+            </div>
+          </div>
+          `
+          document.getElementById('title').value = ''
+        })
+        .catch(e => console.error(e))
+
+      // Store to localStorage
+      localStorage.setItem('movie', JSON.stringify(movie));
+      let list = JSON.parse(localStorage.getItem(movie.title)) || []
+    })
+
+    document.addEventListener('click', event => {
+      if (event.target.classList.contains('addWatchlist')) {
+        event.target.parentNode.parentNode.remove()
+        let movieElem = document.createElement('div')
+        movieElem.className = 'card'
+        movieElem.innerHTML = `
+        <div class="card-content">
+          <h3>${movie.title}</h3>
+          <h4>Directed by ${movie.director}</h4>
+          <h5>Year: ${movie.year}</h5>
+          <p>${movie.plot}</p>
+        </div>
+        <div class="card-action">
+          <button class="btn waves-effect waves-light removeWatchlist">Remove from Watchlist</button>
+        </div>
+        `
+        document.getElementById('watchlist').append(movieElem)
+      } else if (event.target.classList.contains('removeWatchlist')) {
+        event.target.parentNode.parentNode.remove()
+      }
+    })
+  </script>
+
+  &#8203;
+
+</body>
+
+</html>
