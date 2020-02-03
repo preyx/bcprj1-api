@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script href="./Assets/scripts.js"></script>
+  <link rel="icon" type="image/png" href="./Assets/images/ci-icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Share&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./Assets/styles.css">
+  <title>Cypit</title>
+</head>
+<body>
+  <img src="./Assets/images/ci-logo.png">  
+  <div class="container">
+    <form class="col row s6">
+        <div class="form-group">
+          <label for="stockSelectDropdown" class="large-text">Select Stocks</label>
+          <select id="stockSelectDropdown" class="form-control dropdown-trigger teal-text" name="">
+            <option>Text 1</option>
+            <option>Text 2</option>
+            <option>Text 3</option>
+          </select>
+        </div>
+    </form>
+    <button class="btn waves-effect waves-light btn-flat" id="searchMovie">Add<i class="material-icons">add_circle</i></button>
+  </div>
+  <div id="movie" class="col s6"></div>
+  <div id="watchlist" class="col s6"></div>
+</body>
+
+</html>
