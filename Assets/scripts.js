@@ -1,3 +1,7 @@
+$(document).ready( _ => {
+  $('select').formSelect()
+})
+
 let movie = {}
 document.getElementById('searchMovie').addEventListener('click', event => {
   event.preventDefault()
@@ -37,14 +41,14 @@ document.getElementById('searchMovie').addEventListener('click', event => {
     .catch(e => console.error(e))
 
   // Store to localStorage
-  localStorage.setItem('movie', JSON.stringify(movie));
-  let list = JSON.parse(localStorage.getItem(movie.title)) || []
+  localStorage.setItem('movie', JSON.stringify(movie))
+  const list = JSON.parse(localStorage.getItem(movie.title)) || []
 })
 
 document.addEventListener('click', event => {
   if (event.target.classList.contains('addWatchlist')) {
     event.target.parentNode.parentNode.remove()
-    let movieElem = document.createElement('div')
+    const movieElem = document.createElement('div')
     movieElem.className = 'card'
     movieElem.innerHTML = `
         <div class="card-content">
