@@ -73,6 +73,13 @@ body {
   color: red !important;
 }
 
+.search-btn {
+  margin-top: -3.5rem;
+  background-color: #2b3b60 !important;
+  float: right;
+  position: relative;
+}
+
 .mini-margin {
-  margin-top: 0.5em;
+  margin-top: 0.5rem;
 }
