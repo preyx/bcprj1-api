@@ -27,11 +27,26 @@
   font-feature-settings: 'liga';
 }
 
-.btn-flat {
+/* .btn-flat {
     border: 1px solid #0B152A;
     border-radius: 1rem;
+} */
+
+/* select {
+  display: block;
+} */
+
+.sitelogo {
+  height: 80%;
+  position: relative;
+  top: 10%;
+  left: 2%;
 }
 
-select {
-  display: block;
+.nav-wrapper {
+  background-color: #cacaca;
+}
+
+body {
+  background-color: #d8dfee;
 }
