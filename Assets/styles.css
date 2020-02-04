@@ -2,6 +2,10 @@
   font-family: 'Share', cursive;
 }
 
+body {
+  background-color: #ebeff6;
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -27,11 +31,48 @@
   font-feature-settings: 'liga';
 }
 
-.btn-flat {
+/* .btn-flat {
     border: 1px solid #0B152A;
     border-radius: 1rem;
+} */
+
+/* select {
+  display: block;
+} */
+
+.sitelogo {
+  height: 80%;
+  position: relative;
+  top: 10%;
+  left: 2%;
 }
 
-select {
-  display: block;
+.nav-wrapper {
+  background-color: #cacaca;
+}
+
+.card-back {
+  background-color: #162851;
+}
+
+.side-back {
+  background-color: #aab0bf;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+.add-btn {
+  margin: 0px !important;
+  color: lightgreen !important;
+}
+
+.minus-btn {
+  margin: 0px !important;
+  color: red !important;
+}
+
+.mini-margin {
+  margin-top: 0.5em;
 }
