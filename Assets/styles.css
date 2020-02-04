@@ -2,6 +2,10 @@
   font-family: 'Share', cursive;
 }
 
+body {
+  background-color: #ebeff6;
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -47,6 +51,28 @@
   background-color: #cacaca;
 }
 
-body {
-  background-color: #d8dfee;
+.card-back {
+  background-color: #162851;
+}
+
+.side-back {
+  background-color: #aab0bf;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+.add-btn {
+  margin: 0px !important;
+  color: lightgreen !important;
+}
+
+.minus-btn {
+  margin: 0px !important;
+  color: red !important;
+}
+
+.mini-margin {
+  margin-top: 0.5em;
 }

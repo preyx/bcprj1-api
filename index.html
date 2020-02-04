@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Share&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./Assets/styles.css">
-  <title>Cypit</title>
+  <title>CrypIt</title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
   </nav>
   <div class="container">
     <div class="row">
-      <div class="col s12 m6 l8">
+      <div class="col s12 m7 l8">
         <div class="row">
           <div class="input-field col s12">
             <div>
@@ -33,14 +33,38 @@
             </div>
             <div>
               <label for="first_name">Search Stocks</label>
-              <input placeholder="Stock Name" id="first_name" type="text" class="validate">
+              <input placeholder="Stock Name" id="searchBox" type="text" class="validate">
             </div>
-            <!-- <button class="btn waves-effect waves-light btn-flat" id="searchMovie">Add<i class="material-icons">add_circle</i></button> -->
+
+            <div class="card card-back">
+              <div class="card-content white-text">
+                <span class="right right-align">
+                  <h4 class="no-margin">0.333333 BTC</h4>
+                  <p>High: 0.654321 BTC</p>
+                  <p>Low: 0.123456 BTC</p>
+                </span>
+                <span class="card-title">GOOG</span>
+                <p>Google, Inc.</p>
+              </div>
+              <div class="card-action">
+                <a href="#" class="right add-btn"><i class="material-icons">add_circle</i></a>
+                <br />
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col s12 m6 l4">
-        <h1>Watchlist goes here!</h1>
+      <div class="col s12 m5 l4 mini-margin">
+        <div class="card side-back">
+          <div class="card-content">
+            <span class="right right-align mini-margin">
+              <p>0.333333 BTC</p>
+            </span>
+            <span class="card-title">GOOG</span>
+            <a href="#" class="right minus-btn"><i class="material-icons">remove_circle</i></a>
+            <br />
+          </div>
+        </div>
       </div>
     </div>
   </div>
