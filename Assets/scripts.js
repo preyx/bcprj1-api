@@ -1,4 +1,4 @@
-$(document).ready( _ => {
+$(document).ready(_ => {
   $('select').formSelect()
 })
 
