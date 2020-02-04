@@ -8,10 +8,9 @@ function stockInfo(stockSymbol, currentDate) {
       low: data['Time Series (Daily)'][`${currentDate}`]['3. low'],
       close: data['Time Series (Daily)'][`${currentDate}`]['4. close']
     }
-    console.log(stockData)
-
+    // console.log(stockData)
+    return stockData
   })
 
     .catch(e => console.log(e))
 }
-  
