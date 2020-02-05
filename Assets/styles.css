@@ -83,3 +83,8 @@ body {
 .mini-margin {
   margin-top: 0.5rem;
 }
+
+.ci-footer {
+  padding: 0px !important;
+  background-color: #cacaca !important;
+}
