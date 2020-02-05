@@ -30,10 +30,10 @@ $("#makeApiCall").on('click', function () {
             <p>${stockData.close} to Bitcoin: </p>
           </span>
           <span class="card-title">${stockData.symbol}</span>
-          <p>Open:$ ${stockData.open}</p>
-          <p>High:$ ${stockData.high}</p>
-          <p>Low:$ ${stockData.low}</p>
-          <p>Close:$ ${stockData.close}</p>
+          <p>Open: $${stockData.open}</p>
+          <p>High: $${stockData.high}</p>
+          <p>Low: $${stockData.low}</p>
+          <p>Close: $${stockData.close}</p>
         </div>
         <div class="card-action">
           <a href="#" class="right add-btn"><i class="material-icons">add_circle</i></a>
