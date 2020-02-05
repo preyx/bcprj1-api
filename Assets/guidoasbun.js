@@ -23,7 +23,7 @@ $("#makeApiCall").on('click', function () {
       <div class="card card-back">
         <div class="card-content white-text">
           <span class="right right-align">
-            <h4 class="no-margin">Amt in Bitcoin: </h4>
+            <h5 class="no-margin">Amt in Bitcoin: </h5>
             <p>${stockData.open} to Bitcoin: </p>
             <p>${stockData.high} to Bitcoin: </p>
             <p>${stockData.low} to Bitcoin: </p>
