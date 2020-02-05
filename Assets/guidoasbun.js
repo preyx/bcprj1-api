@@ -10,7 +10,6 @@
 //   console.log(currentDate)
 //   console.log(stockSymbol)
 
-<<<<<<< HEAD
 //   let stockData = {}
 //   $.getJSON(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&interval=5min&apikey=MF50LI0Q6H9V0VWV`, function (data) {
 //     stockData = {
@@ -26,7 +25,6 @@
 //     console.log(stockData)
 //   })
 //     .catch(e => console.log(e))
-=======
   let stockData = {}
   $.getJSON(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&interval=5min&apikey=MF50LI0Q6H9V0VWV`, function (data) {
     stockData = {
@@ -62,7 +60,6 @@
   })
     .catch(e => console.log(e))
   $("#searchBox").val('')
->>>>>>> 85e5cbb31fad049c0de5b6ddc0e1c7ec647be1d2
   // }
   // stockInfo(stockSymbol, currentDate)
 // })
