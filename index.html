@@ -1,82 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+            <!DOCTYPE html>
+            <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" type="image/png" href="./Assets/images/ci-icon.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Share&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./Assets/styles.css">
-  <title>CrypIt</title>
-</head>
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <meta http-equiv="X-UA-Compatible" content="ie=edge">
+              <link rel="icon" type="image/png" href="./Assets/images/ci-icon.png">
+              <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+              <link href="https://fonts.googleapis.com/css?family=Share&display=swap" rel="stylesheet">
+              <link rel="stylesheet" href="./Assets/styles.css">
+              <title>CrypIt</title>
+            </head>
 
-<body>
-  <nav>
-    <div class="nav-wrapper"><img src="./Assets/images/ci-logo.png" class="sitelogo"></div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col s12 m7 l8">
-        <div class="row">
-          <div class="input-field col s12">
-            <div>
-              <label>Cryptocurrency:</label>
-              <select class="browser-default">
-                <option value="" disabled selected>Choose your crypto</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-              </select>
-            </div>
-            <div class="mini-margin">
-              <label for="first_name">Search Stocks</label>
-              <input placeholder="Stock Name" id="searchBox" type="text" class="validate">
-            </div>
-            <div>
-              <button id="makeApiCall" class="btn btn-primary">Search</button>
-            </div>
-            <div class="card card-back">
-              <div class="card-content white-text">
-                <span class="right right-align">
-                  <h4 class="no-margin">0.333333 BTC</h4>
-                  <p>High: 0.654321 BTC</p>
-                  <p>Low: 0.123456 BTC</p>
-                </span>
-                <span class="card-title">GOOG</span>
-                <p>Google, Inc.</p>
+            <body>
+              <nav>
+                <div class="nav-wrapper"><img src="./Assets/images/ci-logo.png" class="sitelogo"></div>
+              </nav>
+              <div class="container">
+                <div class="row">
+                  <div class="col s12 m7 l8">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <div>
+                          <label>Cryptocurrency:</label>
+                          <select class="browser-default">
+                            <option value="" disabled selected>Choose your crypto</option>
+                            <option value="" disabled selected>Choose your crypto</option>
+                            <option id="BTC" value="1">BTC</option>
+                            <option id="ETH" value="2">ETH</option>
+                            <option id="XRP" value="3">XRP</option>
+                            <option id="TUSD" value="4">TUSD</option>
+                            <option id="BCH" value="5">BCH</option>
+                          </select>
+                        </div>
+                        <div class="mini-margin">
+                          <label for="first_name">Search Stocks</label>
+                          <input placeholder="Stock Name" id="searchBox" type="text" class="validate">
+                        </div>
+                        <div>
+                          <button id="makeApiCall" class="btn btn-primary">Search</button>
+                        </div>
+                        <div id="stockCard"></div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col s12 m5 l4">
+                    <h2>Watchlist:</h2>
+                    <div class="card side-back">
+                      <div class="card-content">
+                        <span class="right right-align mini-margin">
+                          <p>0.333333 BTC</p>
+                        </span>
+                        <span class="card-title">GOOG</span>
+                        <a href="#" class="right minus-btn"><i class="material-icons">remove_circle</i></a>
+                        <br />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="card-action">
-                <a href="#" class="right add-btn"><i class="material-icons">add_circle</i></a>
-                <br />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m5 l4">
-        <h2>Watchlist:</h2>
-        <div class="card side-back">
-          <div class="card-content">
-            <span class="right right-align mini-margin">
-              <p>0.333333 BTC</p>
-            </span>
-            <span class="card-title">GOOG</span>
-            <a href="#" class="right minus-btn"><i class="material-icons">remove_circle</i></a>
-            <br />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
-  <script src="./Assets/scripts.js"></script>
-  <script src="./Assets/cryptoapi.js"></script>
-  <script src="./Assets/guidoasbun.js"></script>
-</body>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+              <script src="./Assets/scripts.js"></script>
+              <script src="./Assets/cryptoapi.js"></script>
+              <script src="./Assets/guidoasbun.js"></script>
+            </body>
 
-</html>
+            </html>
