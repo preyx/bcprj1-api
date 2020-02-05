@@ -8,10 +8,13 @@ ciData = {
 }
 
 // GENERATE WATCHLIST
-document.getElementById('').innerHTML = ''
-ciData.stocks.forEach(element => {
-  document.getElementById('').innerHTML += ''
-})
+const updateWatch = _ => {
+  document.getElementById('').innerHTML = ''
+  ciData.stocks.forEach(element => {
+    // WATCHLIST CARD CODE GOES HERE
+    document.getElementById('').innerHTML += ''
+  })
+}
 
 // RETURNS TRUE IF ALREADY IN WATCHLIST, FALSE IF NOT
 // X = STOCK SYMBOL
