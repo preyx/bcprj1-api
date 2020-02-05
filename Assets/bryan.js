@@ -12,7 +12,23 @@ const updateWatch = _ => {
   document.getElementById('').innerHTML = ''
   ciData.stocks.forEach(element => {
     // WATCHLIST CARD CODE GOES HERE
-    document.getElementById('').innerHTML += ''
+    
+    document.getElementById('watchlist').innerHTML = `
+    <div class="col s12 m5 l4">
+        <h2>Watchlist:</h2>
+        <div class="card side-back">
+          <div class="card-content">
+            <span class="right right-align mini-margin">
+              <p>0.333333 ${ciData.crypto}</p>
+            </span>
+            <span class="card-title">${ciData.stocks}</span>
+            <a href="#" class="right minus-btn"><i class="material-icons">remove_circle</i></a>
+            <br />
+          </div>
+        </div>
+      </div>
+    `
+    document.getElementById('watchlist').innerHTML += ''
   })
 }
 
