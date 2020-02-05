@@ -22,18 +22,22 @@ const isWatched = x => {
   return ciData.stocks.includes(x)
 }
 
-// ADDS TO WATCHLIST, UPDATE WATCHLIST DISPLAY AFTER CALLING
+// ADDS TO WATCHLIST
 // X = STOCK SYMBOL
 const addWatch = x => {
-  if (!ciData.stocks.includes(x)) ciData.stocks.unshift(x)
+  if (!ciData.stocks.includes(x)) {
+    ciData.stocks.unshift(x)
+    updateWatch()
+  }
 }
 
-// REMOVES FROM WATCHLIST, UPDATE WATCHLIST DISPLAY AFTER CALLING
+// REMOVES FROM WATCHLIST
 // X = STOCK SYMBOL
 const delWatch = x => {
   const index = ciData.stocks.indexOf(x)
   if (index >= 0) {
     ciData.stocks.splice(index, 1)
+    updateWatch()
   }
 }
 
