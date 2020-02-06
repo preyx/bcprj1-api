@@ -91,16 +91,7 @@ body {
   margin-top: 0.5rem;
 }
 
-.ci-footer {
-  padding: 0px !important;
-  background-color: #cacaca !important;
-  bottom: 0;
-  position: sticky;
-  min-width: -webkit-fill-available;
-  width: 100%;
-  margin-top: 3rem;
-  font-size: 1rem;
-}
+
 
 
 .watchlistTitle {
@@ -165,7 +156,16 @@ textarea.materialize-textarea {
 .fail-input-color {
   background-color: #ff888859 !important;
 }
-
+/* .ci-footer {
+  padding: 0px !important;
+  background-color: #cacaca !important;
+  bottom: 0;
+  position: sticky;
+  min-width: -webkit-fill-available;
+  width: 100%;
+  margin-top: 3rem;
+  font-size: 1rem;
+} */
 .ci-footer {
   padding: 0px !important;
   background-color: #cacaca !important;
@@ -173,7 +173,7 @@ textarea.materialize-textarea {
   position: absolute;
   min-width: -webkit-fill-available;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 5rem;
   font-size: 1rem;
 }
 
