@@ -11,9 +11,9 @@
   <link href="https://fonts.googleapis.com/css?family=Share&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./Assets/styles.css">
   <title>CrypIt</title>
+  <body>
 </head>
 
-<body>
   <nav>
     <div class="nav-wrapper"><img src="./Assets/images/ci-logo.png" class="sitelogo"></div>
   </nav>
@@ -25,54 +25,38 @@
             <div>
               <label>Cryptocurrency:</label>
               <select id="cryptoSelector" class="browser-default">
-                <option value="" disabled selected>Choose your crypto</option>
-                <option id="BTC" value="BTC">BTC</option>
-                <option id="ETH" value="ETH">ETH</option>
-                <option id="XRP" value="XRP">XRP</option>
-                <option id="TUSD" value="TUSD">TUSD</option>
-                <option id="BCH" value="BCH">BCH</option>
-                </select>
-                </div>
-                <div class="mini-margin">
-                  <label for="first_name">Search Stocks</label>
-                  <input placeholder="Stock Name" id="searchBox" type="text" class="validate">
-                </div>
-                <div>
-                  <button id="makeApiCall" class="btn btn-primary">Search</button>
-                </div>
+              </select>
+            </div>
+            <div class="mini-margin">
+              <label for="first_name">Search Stocks</label>
+              <input placeholder="Stock Name" id="searchBox" type="text" class="validate">
+            </div>
+            <div>
+              <button id="makeApiCall" class="btn btn-primary">Search</button>
+            </div>
             <div id="stockCard"></div>
-            
           </div>
         </div>
       </div>
       <div class="col s12 m5 l4">
         <h2>Watchlist:</h2>
-        <div class="card side-back">
-          <div class="card-content">
-            <span class="right right-align mini-margin">
-              <p>0.333333 BTC</p>
-            </span>
-            <span class="card-title">GOOG</span>
-            <a href="#" class="right minus-btn"><i class="material-icons">remove_circle</i></a>
-            <br />
-          </div>
+        <div id="watchlist">
         </div>
       </div>
     </div>
   </div>
-    <footer class="page-footer ci-footer">
-      <div class="footer-copyright center-align">
-        <div class="container">
-          Made with the blood, sweat and tears of: Guido A, Jordan S, Julian V, and Bryan Y
-        </div>
+  <footer class="page-footer ci-footer">
+    <div class="footer-copyright center-align">
+      <div class="container">
+        Made with the blood, sweat and tears (& luv ❤️) of: Guido A, Jordan S, Julian V, and Bryan Y
       </div>
-    </footer>
+    </div>
+  </footer>
+</body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
   <script src="./Assets/scripts.js"></script>
-  <!-- <script src="./Assets/cryptoapi.js"></script> -->
-  <!-- <script src="./Assets/guidoasbun.js"></script> -->
 </body>
 
 </html>
