@@ -31,14 +31,19 @@ body {
   font-feature-settings: 'liga';
 }
 
-/* .btn-flat {
-    border: 1px solid #0B152A;
-    border-radius: 1rem;
-} */
+#makeApiCall {
+  border: 1px solid #0077dd;
+  border-radius: 0.5rem;
+  /* margin-top: -6rem; */
+  /* margin-left: 47rem; */
+  /* position: relative; */
+}
+.bordered {
+  border-radius: 1rem;
+  border: 1px solid #000;
+  margin-top: 1rem;
+}
 
-/* select {
-  display: block;
-} */
 
 .sitelogo {
   height: 80%;
@@ -60,7 +65,7 @@ body {
 }
 
 .no-margin {
-  margin: 0px;
+  margin-top: 0px;
 }
 
 .add-btn {
@@ -73,12 +78,12 @@ body {
   color: red !important;
 }
 
-.search-btn {
+/* .search-btn {
   margin-top: -3.5rem;
   background-color: #2b3b60 !important;
   float: right;
   position: relative;
-}
+} */
 
 .mini-margin {
   margin-top: 0.5rem;
@@ -87,4 +92,9 @@ body {
 .ci-footer {
   padding: 0px !important;
   background-color: #cacaca !important;
+  bottom: 0px;
+  position: inherit;
+  min-width: -webkit-fill-available;
+  width: 100%;
+  margin-top: 3rem;
 }
