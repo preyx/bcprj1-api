@@ -2,6 +2,8 @@
 // let stockSymbol = 'ups'
 // currentDate = '2020-02-04'
 // function stockInfo(stockSymbol, currentDate) {
+
+
 $('#makeApiCall').on('click', function () {
   const stockSearch = $('#searchBox').val()
   const currentTime = moment()
@@ -76,7 +78,7 @@ $('#makeApiCall').on('click', function () {
         <p>${stockName}</p>
         </div>
         <div class="card-action">
-        <a href="#" class="right add-btn"><i class="material-icons">add_circle</i></a><br/>
+        <a href="#" id="${stockSymbol}" class="right add-btn"><i class="material-icons">add_circle</i></a><br/>
         </div>
         </div>
         `)
@@ -96,29 +98,52 @@ ciData = {
 }
 
 // GENERATE WATCHLIST
-const updateWatch = _ => {
-  document.getElementById('').innerHTML = ''
-  ciData.stocks.forEach(element => {
-    // WATCHLIST CARD CODE GOES HERE
 
-    document.getElementById('watchlist').innerHTML = `
-<div class="col s12 m5 l4">
-  <h2>Watchlist:</h2>
-  <div class="card side-back">
-    <div class="card-content">
-      <span class="right right-align mini-margin">
-        <p>0.333333 ${ciData.crypto}</p>
-      </span>
-      <span class="card-title">${ciData.stocks}</span>
-      <a href="#" class="right minus-btn"><i class="material-icons">remove_circle</i></a>
-      <br />
-    </div>
-  </div>
-</div>
-`
-    document.getElementById('watchlist').innerHTML += ''
-  })
-}
+document.addEventListener('click', event => {
+  console.log(event.target.parentNode)
+  if (event.target.parentNode.className.includes('add-btn')) {
+    let stockElem = document.createElement('div')
+    stockElem.innerHTML = `
+     <div class="card side-back">
+          <div class="card-content">
+            <span class="right right-align mini-margin">
+              <p>0.333333 BTC</p>
+            </span>
+            <span class="card-title">GOOG</span>
+            <a href="#" class="right minus-btn"><i class="material-icons">remove_circle</i></a>
+            <br />
+          </div>
+        </div> 
+    `
+    document.getElementById('watchlist').append(stockElem)
+  } else if (event.target.parentNode.className.includes('minus-btn')) {
+      event.target.parentNode.parentNode.remove()
+    console.log('I am the remove button!!!')
+  }
+})
+// const updateWatch = _ => {
+//   document.getElementById('').innerHTML = ''
+//   ciData.stocks.forEach(element => {
+//     // WATCHLIST CARD CODE GOES HERE
+
+//     document.getElementById('watchlist').innerHTML = `
+//     <div class="col s12 m5 l4">
+//       <h2>Watchlist:</h2>
+//       <div class="card side-back">
+//         <div class="card-content">
+//           <span class="right right-align mini-margin">
+//             <p>0.333333 ${ciData.crypto}</p>
+//           </span>
+//           <span class="card-title">${ciData.stocks}</span>
+//           <a href="#" class="right minus-btn"><i class="material-icons">remove_circle</i></a>
+//           <br />
+//         </div>
+//       </div>
+//     </div>
+//     `
+//     document.getElementById('watchlist').innerHTML += ''
+//   })
+// }
 
 // RETURNS TRUE IF ALREADY IN WATCHLIST, FALSE IF NOT
 // X = STOCK SYMBOL
