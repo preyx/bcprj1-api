@@ -93,7 +93,7 @@ body {
   padding: 0px !important;
   background-color: #cacaca !important;
   bottom: 0px;
-  position: inherit;
+  position: absolute;
   min-width: -webkit-fill-available;
   width: 100%;
   margin-top: 3rem;
