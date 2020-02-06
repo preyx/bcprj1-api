@@ -98,3 +98,7 @@ body {
   width: 100%;
   margin-top: 3rem;
 }
+
+.ci-watchlist {
+  color: #0c0c0c !important;
+}
