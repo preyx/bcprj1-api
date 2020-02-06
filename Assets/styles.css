@@ -170,7 +170,7 @@ textarea.materialize-textarea {
   padding: 0px !important;
   background-color: #cacaca !important;
   top: 100%;
-  position: absolute;
+  position: inherit;
   min-width: -webkit-fill-available;
   width: 100%;
   margin-top: 5rem;
