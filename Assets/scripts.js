@@ -2,87 +2,102 @@
 // let stockSymbol = 'ups'
 // currentDate = '2020-02-04'
 // function stockInfo(stockSymbol, currentDate) {
+
+
 $('#makeApiCall').on('click', function () {
-  const stockSearch = $('#searchBox').val()
-  const currentTime = moment()
-  const currentDate = currentTime.format('YYYY-MM-DD')
-  let stockSymbol = ''
-  let stockName = ''
+  if ($("#searchBox").val().trim() === "") {
+    $("#searchBox").attr('placeholder', "Please Enter Stock Name!");
+    $("#searchBox").val('')
+    $("#searchBox").addClass('red-input-fail')
+    $("#searchBox").addClass('fail-input-color')
+    console.log("Nohing Searched! : " + $("#searchBox").val())
+  } else {
 
-  $.getJSON(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${stockSearch}&apikey=MF50LI0Q6H9V0VWV`, ({ bestMatches }) => {
-    console.log(bestMatches[0])
-    stockSymbol = bestMatches[0]['1. symbol']
-    stockName = bestMatches[0]['2. name']
+    $("#searchBox").removeClass('red-input-fail')
+    $("#searchBox").removeClass('fail-input-color')
+    console.log("Searched Stock: " + $("#searchBox").val())
 
-    console.log(currentDate)
-    console.log(stockSymbol)
+    const stockSearch = $('#searchBox').val()
+    const currentTime = moment()
+    const currentDate = currentTime.format('YYYY-MM-DD')
+    let stockSymbol = ''
+    let stockName = ''
 
-    let stockData = {}
-    $.getJSON(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=MF50LI0Q6H9V0VWV`, data => {
-      console.log(stockData)
-      stockData = {
-        symbol: data['Meta Data']['2. Symbol'],
-        open: data['Time Series (Daily)'][currentDate]['1. open'],
-        high: data['Time Series (Daily)'][currentDate]['2. high'],
-        low: data['Time Series (Daily)'][currentDate]['3. low'],
-        close: data['Time Series (Daily)'][currentDate]['4. close']
-      }
+    $.getJSON(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${stockSearch}&apikey=MF50LI0Q6H9V0VWV`, ({ bestMatches }) => {
+      console.log(bestMatches[0])
+      stockSymbol = bestMatches[0]['1. symbol']
+      stockName = bestMatches[0]['2. name']
 
-      // $("#cryptoSelector").on('change', function () {
+      console.log(currentDate)
+      console.log(stockSymbol)
 
-      const cryptoData = {}
-      cryptoName = $('#cryptoSelector').val()
-      $.getJSON(`https://min-api.cryptocompare.com/data/price?fsym=${cryptoName}&tsyms=USD&api_key=0190464490a4a78ca623e065b1766167f8810d127b191c98a032bb28a9aa1604`)
-        .then(({ cryptyName, USD }) => {
-          console.log('cryptyName = ' + cryptyName)
-          console.log('dollarValue = ' + USD)
-          const dollarValue = USD
-          const coinType = dollarValue
-          let decimals = 0
-          // TODO: MATH.ROUND SECTION
-          // const convertOpen = Math.round((stockData.open / coinType) * 1000000) / 1000000
-          let convertHigh = stockData.high / coinType
-          let convertLow = stockData.low / coinType
-          let convertClose = stockData.close / coinType
-          let multiplier = 1
+      let stockData = {}
+      $.getJSON(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=MF50LI0Q6H9V0VWV`, data => {
+        console.log(stockData)
+        stockData = {
+          symbol: data['Meta Data']['2. Symbol'],
+          open: data['Time Series (Daily)'][currentDate]['1. open'],
+          high: data['Time Series (Daily)'][currentDate]['2. high'],
+          low: data['Time Series (Daily)'][currentDate]['3. low'],
+          close: data['Time Series (Daily)'][currentDate]['4. close']
+        }
 
-          while (convertClose < 100000) {
-            convertHigh *= 10
-            convertLow *= 10
-            convertClose *= 10
-            decimals++
-          }
+        // $("#cryptoSelector").on('change', function () {
 
-          while (decimals > 0) {
-            multiplier *= 10
-            decimals--
-          }
-          multiplier = Math.round(multiplier)
+        const cryptoData = {}
+        cryptoName = $('#cryptoSelector').val()
+        $.getJSON(`https://min-api.cryptocompare.com/data/price?fsym=${cryptoName}&tsyms=USD&api_key=0190464490a4a78ca623e065b1766167f8810d127b191c98a032bb28a9aa1604`)
+          .then(({ cryptyName, USD }) => {
+            console.log('cryptyName = ' + cryptyName)
+            console.log('dollarValue = ' + USD)
+            const dollarValue = USD
+            const coinType = dollarValue
+            let decimals = 0
+            // TODO: MATH.ROUND SECTION
+            // const convertOpen = Math.round((stockData.open / coinType) * 1000000) / 1000000
+            let convertHigh = stockData.high / coinType
+            let convertLow = stockData.low / coinType
+            let convertClose = stockData.close / coinType
+            let multiplier = 1
 
-          convertHigh = Math.round(convertHigh) / multiplier
-          convertLow = Math.round(convertLow) / multiplier
-          convertClose = Math.round(convertClose) / multiplier
+            while (convertClose < 100000) {
+              convertHigh *= 10
+              convertLow *= 10
+              convertClose *= 10
+              decimals++
+            }
 
-          $('#stockCard').html(`
-        <div class="card card-back">
-        <div class="card-content white-text">
-        <span class="right right-align">
-        <h5 class="no-margin">${convertClose} ${cryptoName}</h5>
-        <p>High: ${convertHigh} ${cryptoName}</p>
-        <p>Low: ${convertLow} ${cryptoName}</p>
-        </span>
-        <span class="card-title">${stockSymbol}</span>
-        <p>${stockName}</p>
-        </div>
-        <div class="card-action">
-        <a href="#" class="right add-btn"><i class="material-icons">add_circle</i></a><br/>
-        </div>
-        </div>
-        `)
-        })
+            while (decimals > 0) {
+              multiplier *= 10
+              decimals--
+            }
+            multiplier = Math.round(multiplier)
+
+            convertHigh = Math.round(convertHigh) / multiplier
+            convertLow = Math.round(convertLow) / multiplier
+            convertClose = Math.round(convertClose) / multiplier
+
+            $('#stockCard').html(`
+          <div class="card card-back">
+          <div class="card-content white-text">
+          <span class="right right-align">
+          <h5 class="no-margin">${convertClose} ${cryptoName}</h5>
+          <p>High: ${convertHigh} ${cryptoName}</p>
+          <p>Low: ${convertLow} ${cryptoName}</p>
+          </span>
+          <span class="card-title">${stockSymbol}</span>
+          <p>${stockName}</p>
+          </div>
+          <div class="card-action">
+          <a href="#" class="right add-btn"><i class="material-icons">add_circle</i></a><br/>
+          </div>
+          </div>
+          `)
+          })
+      })
     })
-  })
-  // .catch(e => console.error(e))
+    // .catch(e => console.error(e))
+  }
 })
 
 // RETRIEVE DATA FROM LOCALSTORAGE
