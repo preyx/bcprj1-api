@@ -19,6 +19,7 @@ $('#makeApiCall').on('click', function () {
 
     let stockData = {}
     $.getJSON(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=MF50LI0Q6H9V0VWV`, data => {
+      console.log(stockData)
       stockData = {
         symbol: data['Meta Data']['2. Symbol'],
         open: data['Time Series (Daily)'][currentDate]['1. open'],
@@ -26,8 +27,6 @@ $('#makeApiCall').on('click', function () {
         low: data['Time Series (Daily)'][currentDate]['3. low'],
         close: data['Time Series (Daily)'][currentDate]['4. close']
       }
-
-      console.log(stockData)
 
       // $("#cryptoSelector").on('change', function () {
 
