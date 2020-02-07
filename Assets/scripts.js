@@ -1,6 +1,10 @@
 const ciData = JSON.parse(localStorage.getItem('crypit')) || { crypto: 'BTC', stocks: [] }
 const ciList = ['BTC', 'ETH', 'XRP', 'TUSD', 'BCH', 'EOS', 'ETC', 'LTC', 'TRX', 'BSV', 'BNB', 'LINK']
-
+$("#searchBox").keyup(function (event) {
+  if (event.keyCode === 13) {
+    $("#makeApiCall").click();
+  }
+});
 $('#makeApiCall').on('click', _ => {
   if ($('#searchBox').val().trim() === '') {
     $('#searchBox').attr('placeholder', 'Please Enter Stock Name!')
@@ -110,13 +114,13 @@ const updateWatch = _ => {
   $('#watchlist').html('')
   ciData.stocks.forEach(element => {
     $('#watchlist').append(`
-<div class="card side-back">
-  <div class="card-content">
-    <a href="#" id=${element} class="right minus-btn"><i class="material-icons">remove_circle</i></a>
-    <h5 class="no-margin"><a href="#" class="ci-watchlist" id="${element}">${element}</a></h5>
-  </div>
-</div>
-`)
+      <div class="card side-back">
+        <div class="card-content">
+          <a href="#" id=${element} class="right minus-btn"><i class="material-icons">remove_circle</i></a>
+          <h5 class="no-margin"><a href="#" class="ci-watchlist" id="${element}">${element}</a></h5>
+        </div>
+      </div>
+    `)
   })
 }
 
