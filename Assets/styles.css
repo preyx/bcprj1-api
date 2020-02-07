@@ -22,7 +22,8 @@ body {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
-  border: 0.15rem solid #26a69a;
+  border: 0.15rem solid #6291fc;
+  box-shadow: inset 0 0 9px 0px #002c62;
   border-radius: 50%;
 }
 
@@ -33,11 +34,16 @@ body {
   /* margin-left: 47rem; */
   /* position: relative; */
 }
-
+.btn:hover,
+.btn-large:hover,
+.btn-small:hover {
+  background-color: #22d0fc;
+}
 .bordered {
   border-radius: 1rem;
   border: 1px solid #000;
-  margin-top: 1rem;
+  margin-top: 0rem;
+  padding: 1.5rem !important;
 }
 
 
@@ -56,12 +62,20 @@ body {
   background-color: #162851;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem !important;
 }
+select {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #6291fc;
+  border-radius: 2px;
+  height: 3rem;
+}
 
 .card .card-action {
   background-color: inherit;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   position: relative;
-  padding: 16px 24px;
+  padding: 10px 24px 15px;
   border-radius: .5rem;
 }
 
@@ -102,7 +116,23 @@ body {
 input::placeholder {
   margin-left: 1rem;
 }
-
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #6291fc;
+  -webkit-box-shadow: 0 1px 0 0 #afc7fd;
+  box-shadow: 0px 1px 0px 0px #afc7fd;
+}
 input:not([type]),
 input[type=text]:not(.browser-default),
 input[type=password]:not(.browser-default),
@@ -135,7 +165,37 @@ textarea.materialize-textarea {
   transition: box-shadow .3s, border .3s;
   transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
 }
-
+input.valid:not([type]),
+input.valid:not([type]):focus,
+input.valid[type=text]:not(.browser-default),
+input.valid[type=text]:not(.browser-default):focus,
+input.valid[type=password]:not(.browser-default),
+input.valid[type=password]:not(.browser-default):focus,
+input.valid[type=email]:not(.browser-default),
+input.valid[type=email]:not(.browser-default):focus,
+input.valid[type=url]:not(.browser-default),
+input.valid[type=url]:not(.browser-default):focus,
+input.valid[type=time]:not(.browser-default),
+input.valid[type=time]:not(.browser-default):focus,
+input.valid[type=date]:not(.browser-default),
+input.valid[type=date]:not(.browser-default):focus,
+input.valid[type=datetime]:not(.browser-default),
+input.valid[type=datetime]:not(.browser-default):focus,
+input.valid[type=datetime-local]:not(.browser-default),
+input.valid[type=datetime-local]:not(.browser-default):focus,
+input.valid[type=tel]:not(.browser-default),
+input.valid[type=tel]:not(.browser-default):focus,
+input.valid[type=number]:not(.browser-default),
+input.valid[type=number]:not(.browser-default):focus,
+input.valid[type=search]:not(.browser-default),
+input.valid[type=search]:not(.browser-default):focus,
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid:focus,
+.select-wrapper.valid>input.select-dropdown {
+  border-bottom: 1px solid #62d1fc;
+  -webkit-box-shadow: 0 1px 0 0 #62d1fc;
+  box-shadow: 0 1px 0 0 #a6e0f9;
+}
 .red-input-fail::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: rgb(150, 0, 0);
@@ -207,14 +267,41 @@ textarea.materialize-textarea {
   margin-top: 100px;
   position: sticky;
 }
+#makeApiCall {
+  border: 1px solid #0077dd;
+  border-radius: 0.5rem;
+  /* margin-top: -6rem; */
+  /* margin-left: 47rem; */
+  /* position: relative; */
+}
 
-/* Bring Watchlist Height to match Border of Container Height */
-@media only screen and (min-width: 993px) {
-  .row .col.l4 {
-    width: 33.3333333333%;
-    margin-left: auto;
-    left: auto;
-    right: auto;
-    margin-top: -1.8rem;
-  }
+.btn:focus,
+.btn-large:focus,
+.btn-small:focus,
+.btn-floating:focus {
+  background-color: #6291fc;
+}
+.btn,
+.btn-large,
+.btn-small {
+  text-decoration: none;
+  color: #fff;
+  background-color: #6291fc;
+  text-align: center;
+  letter-spacing: .5px;
+  -webkit-transition: background-color .2s ease-out;
+  transition: background-color .2s ease-out;
+  cursor: pointer;
+}
+.card {
+  border: 1px solid #6291fc;
+  margin: .5rem 0 1rem 0;
+  border-radius: 0.5rem;
+}
+#stockCard {
+    margin-top: 1.5rem;
+    margin-bottom: -0.5rem;
+}
+.row .col {
+  padding: 0 1.75rem;
 }
