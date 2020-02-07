@@ -1,12 +1,5 @@
-// RETRIEVE DATA FROM LOCALSTORAGE
 const ciData = JSON.parse(localStorage.getItem('crypit')) || { crypto: 'BTC', stocks: [] }
 const ciList = ['BTC', 'ETH', 'XRP', 'TUSD', 'BCH', 'EOS', 'ETC', 'LTC', 'TRX', 'BSV', 'BNB', 'LINK']
-
-// CIDATA STRUCTURE, EXAMPLE VALUES
-// ciData = {
-//   crypto: 'BTC',
-//   stocks: ['FB', 'AMZN', 'AAPL', 'NFLX', 'GOOG']
-// }
 
 $('#makeApiCall').on('click', _ => {
   if ($('#searchBox').val().trim() === '') {
@@ -26,15 +19,12 @@ $('#makeApiCall').on('click', _ => {
     let stockName = ''
 
     $.getJSON(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${stockSearch}&apikey=MF50LI0Q6H9V0VWV`, ({ bestMatches }) => {
-      // console.log(bestMatches[0])
       stockSymbol = bestMatches[0]['1. symbol']
       stockName = bestMatches[0]['2. name']
-      // console.log(currentDate)
-      // console.log(stockSymbol)
+
 
       let stockData = {}
       $.getJSON(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=MF50LI0Q6H9V0VWV`, data => {
-        // console.log(stockData)
         stockData = {
           symbol: data['Meta Data']['2. Symbol'],
           open: data['Time Series (Daily)'][currentDate]['1. open'],
@@ -47,8 +37,6 @@ $('#makeApiCall').on('click', _ => {
         cryptoName = $('#cryptoSelector').val()
         $.getJSON(`https://min-api.cryptocompare.com/data/price?fsym=${cryptoName}&tsyms=USD&api_key=0190464490a4a78ca623e065b1766167f8810d127b191c98a032bb28a9aa1604`)
           .then(({ cryptyName, USD }) => {
-            // console.log('cryptyName = ' + cryptyName)
-            // console.log('dollarValue = ' + USD)
             const dollarValue = USD
             const coinType = dollarValue
             let decimals = 0
@@ -58,7 +46,6 @@ $('#makeApiCall').on('click', _ => {
             let multiplier = 1
             let currVal = parseFloat(stockData.close).toFixed(2)
             var cardValueCurrent = currVal
-            console.log("Current Stock Value: " + cardValueCurrent)
 
             while (convertClose < 100000) {
               convertHigh *= 10
@@ -71,8 +58,8 @@ $('#makeApiCall').on('click', _ => {
               multiplier *= 10
               decimals--
             }
-            multiplier = Math.round(multiplier)
 
+            multiplier = Math.round(multiplier)
             convertHigh = Math.round(convertHigh) / multiplier
             convertLow = Math.round(convertLow) / multiplier
             convertClose = Math.round(convertClose) / multiplier
@@ -102,7 +89,6 @@ $('#makeApiCall').on('click', _ => {
 })
 
 $('#cryptoSelector').change(event => {
-  // console.log(event)
   ciData.crypto = event.target.value
   localStorage.setItem('crypit', JSON.stringify(ciData))
 })
@@ -110,14 +96,11 @@ $('#cryptoSelector').change(event => {
 $(document).click(event => {
   event.preventDefault()
   const pNode = event.target.parentNode
-  // console.log(pNode)
   if (pNode.className.includes('add-btn')) {
     addWatch(pNode.id)
   } else if (pNode.className.includes('minus-btn')) {
     delWatch(pNode.id)
   } else if (event.target.className.includes('ci-watchlist')) {
-    // console.log('WATCH')
-    // $('#searchBox').val('AMAZON')
     $('#searchBox').val(event.target.id)
     $('#makeApiCall').trigger('click')
   }
@@ -137,14 +120,10 @@ const updateWatch = _ => {
   })
 }
 
-// RETURNS TRUE IF ALREADY IN WATCHLIST, FALSE IF NOT
-// X = STOCK SYMBOL
 const isWatched = x => {
   return ciData.stocks.includes(x)
 }
 
-// ADDS TO WATCHLIST
-// X = STOCK SYMBOL
 const addWatch = x => {
   if (!ciData.stocks.includes(x)) {
     ciData.stocks.unshift(x)
@@ -153,8 +132,6 @@ const addWatch = x => {
   }
 }
 
-// REMOVES FROM WATCHLIST
-// X = STOCK SYMBOL
 const delWatch = x => {
   const index = ciData.stocks.indexOf(x)
   if (index >= 0) {
