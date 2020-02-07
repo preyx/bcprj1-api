@@ -56,6 +56,9 @@ $('#makeApiCall').on('click', _ => {
             let convertLow = stockData.low / coinType
             let convertClose = stockData.close / coinType
             let multiplier = 1
+            let currVal = parseFloat(stockData.close).toFixed(2)
+            var cardValueCurrent = currVal
+            console.log("Current Stock Value: " + cardValueCurrent)
 
             while (convertClose < 100000) {
               convertHigh *= 10
@@ -74,22 +77,24 @@ $('#makeApiCall').on('click', _ => {
             convertLow = Math.round(convertLow) / multiplier
             convertClose = Math.round(convertClose) / multiplier
 
+
             $('#stockCard').html(`
-<div class="card card-back">
-<div class="card-content white-text">
-<span class="right right-align">
-<h5 class="no-margin">${convertClose} ${cryptoName}</h5>
-<p>High: ${convertHigh} ${cryptoName}</p>
-<p>Low: ${convertLow} ${cryptoName}</p>
-</span>
-<span class="card-title">${stockSymbol}</span>
-<p>${stockName}</p>
-</div>
-${isWatched(stockSymbol) ? '' : `<div class="card-action">
-<a href="#" id="${stockSymbol}" class="right add-btn"><i class="material-icons">add_circle</i><a><br/>
-</div>`}
-</div>
-`)
+                <div class="card card-back">
+                  <div class="card-content white-text">
+                  <span class="right right-align">
+                    <h5 class="no-margin">${convertClose} ${cryptoName}</h5>
+                    <p>High: ${convertHigh} ${cryptoName}</p>
+                    <p>Low: ${convertLow} ${cryptoName}</p>
+                  </span>
+                  <span class="card-title">${stockSymbol}</span>
+                  <p><b>${stockName}</b></p>
+                  <p><b>Current Price: $${cardValueCurrent}</b></p>
+                </div>
+                ${isWatched(stockSymbol) ? '' : `<div class="card-action">
+                <a href="#" id="${stockSymbol}" class="right add-btn"><i class="material-icons">add_circle</i><a><br/>
+                </div>`}
+              </div>
+            `)
           })
       })
     })
