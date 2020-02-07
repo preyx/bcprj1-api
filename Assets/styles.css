@@ -199,3 +199,8 @@ textarea.materialize-textarea {
 .ci-watchlist {
   color: #0c0c0c !important;
 }
+.foot {
+    top: 100%;
+    margin-top: 100px;
+    position: sticky;
+}
