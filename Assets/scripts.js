@@ -1,6 +1,6 @@
 // RETRIEVE DATA FROM LOCALSTORAGE
 const ciData = JSON.parse(localStorage.getItem('crypit')) || { crypto: 'BTC', stocks: [] }
-const ciList = ['BTC', 'ETH', 'XRP', 'TUSD', 'BCH']
+const ciList = ['BTC', 'ETH', 'XRP', 'TUSD', 'BCH', 'EOS', 'ETC', 'LTC', 'TRX', 'BSV', 'BNB', 'LINK']
 
 // CIDATA STRUCTURE, EXAMPLE VALUES
 // ciData = {
