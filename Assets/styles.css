@@ -4,6 +4,32 @@
 
 body {
   background-color: #ebeff6;
+  
+}
+@media only screen and (min-width: 1200px) {
+  body {
+    min-height: 900px;
+  }
+}
+@media only screen and (max-width: 1200px){
+  body {
+    min-height: 1300px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  body {
+    min-height: 900px;
+  }
+}
+@media only screen and (max-width: 499px){
+  body {
+    min-height: 700px;
+  }
+}
+@media only screen and (max-width: 100) and (min-width: 100) {
+  body {
+    min-height: 500px;
+  }
 }
 
 .material-icons {
