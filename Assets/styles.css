@@ -27,13 +27,7 @@ body {
   border-radius: 50%;
 }
 
-#makeApiCall {
-  border: 1px solid #0077dd;
-  border-radius: 0.5rem;
-  /* margin-top: -6rem; */
-  /* margin-left: 47rem; */
-  /* position: relative; */
-}
+
 
 .btn:hover,
 .btn-large:hover,
@@ -100,12 +94,6 @@ select {
   color: red !important;
 }
 
-/* .search-btn {
-  margin-top: -3.5rem;
-  background-color: #2b3b60 !important;
-  float: right;
-  position: relative;
-} */
 
 .mini-margin {
   margin-top: 0.5rem;
@@ -204,19 +192,15 @@ textarea.materialize-textarea.valid:focus,
 }
 
 .red-input-fail::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: rgb(150, 0, 0);
   opacity: 1;
-  /* Firefox */
 }
 
 .red-input-fail:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
   color: rgb(150, 0, 0);
 }
 
 .red-input-fail::-ms-input-placeholder {
-  /* Microsoft Edge */
   color: rgb(150, 0, 0);
 }
 
@@ -224,16 +208,7 @@ textarea.materialize-textarea.valid:focus,
   background-color: #ff888859 !important;
 }
 
-/* .ci-footer {
-  padding: 0px !important;
-  background-color: #cacaca !important;
-  bottom: 0;
-  position: sticky;
-  min-width: -webkit-fill-available;
-  width: 100%;
-  margin-top: 3rem;
-  font-size: 1rem;
-} */
+
 .ci-footer {
   padding: 0px !important;
   background-color: #cacaca !important;
@@ -275,13 +250,6 @@ textarea.materialize-textarea.valid:focus,
   position: sticky;
 }
 
-#makeApiCall {
-  border: 1px solid #0077dd;
-  border-radius: 0.5rem;
-  /* margin-top: -6rem; */
-  /* margin-left: 47rem; */
-  /* position: relative; */
-}
 
 .btn:focus,
 .btn-large:focus,
@@ -322,4 +290,16 @@ textarea.materialize-textarea.valid:focus,
  border: 1px solid #2d51a3 !important;
  border-radius: .5rem !important;
  width: -webkit-fill-available !important;
+}
+#makeApiCall {
+  border: 1px solid #0077dd!important;
+  border-radius: 0.5rem!important;
+  -webkit-border-radius: 0.5rem!important;
+  -moz-border-radius: 0.5rem!important;
+  -ms-border-radius: 0.5rem!important;
+  -o-border-radius: 0.5rem!important;
+}
+
+.love {
+  margin-bottom: .5rem!important;
 }
