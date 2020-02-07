@@ -34,11 +34,13 @@ body {
   /* margin-left: 47rem; */
   /* position: relative; */
 }
+
 .btn:hover,
 .btn-large:hover,
 .btn-small:hover {
   background-color: #22d0fc;
 }
+
 .bordered {
   border-radius: 1rem;
   border: 1px solid #000;
@@ -62,6 +64,7 @@ body {
   background-color: #162851;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem !important;
 }
+
 select {
   background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
@@ -116,6 +119,7 @@ select {
 input::placeholder {
   margin-left: 1rem;
 }
+
 input:not([type]):focus:not([readonly]),
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
@@ -133,6 +137,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   -webkit-box-shadow: 0 1px 0 0 #afc7fd;
   box-shadow: 0px 1px 0px 0px #afc7fd;
 }
+
 input:not([type]),
 input[type=text]:not(.browser-default),
 input[type=password]:not(.browser-default),
@@ -165,6 +170,7 @@ textarea.materialize-textarea {
   transition: box-shadow .3s, border .3s;
   transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
 }
+
 input.valid:not([type]),
 input.valid:not([type]):focus,
 input.valid[type=text]:not(.browser-default),
@@ -196,6 +202,7 @@ textarea.materialize-textarea.valid:focus,
   -webkit-box-shadow: 0 1px 0 0 #62d1fc;
   box-shadow: 0 1px 0 0 #a6e0f9;
 }
+
 .red-input-fail::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: rgb(150, 0, 0);
@@ -267,6 +274,7 @@ textarea.materialize-textarea.valid:focus,
   margin-top: 100px;
   position: sticky;
 }
+
 #makeApiCall {
   border: 1px solid #0077dd;
   border-radius: 0.5rem;
@@ -281,6 +289,7 @@ textarea.materialize-textarea.valid:focus,
 .btn-floating:focus {
   background-color: #6291fc;
 }
+
 .btn,
 .btn-large,
 .btn-small {
@@ -293,15 +302,24 @@ textarea.materialize-textarea.valid:focus,
   transition: background-color .2s ease-out;
   cursor: pointer;
 }
+
 .card {
   border: 1px solid #6291fc;
   margin: .5rem 0 1rem 0;
   border-radius: 0.5rem;
 }
+
 #stockCard {
-    margin-top: 1.5rem;
-    margin-bottom: -0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: -0.5rem;
 }
+
 .row .col {
   padding: 0 1.75rem;
+}
+
+.border-width {
+ border: 1px solid #2d51a3 !important;
+ border-radius: .5rem !important;
+ width: -webkit-fill-available !important;
 }
