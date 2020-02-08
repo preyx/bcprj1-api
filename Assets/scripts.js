@@ -18,7 +18,7 @@ $('#makeApiCall').on('click', _ => {
     console.log('Searched Stock: ' + $('#searchBox').val())
     const stockSearch = $('#searchBox').val()
     const currentTime = moment()
-    const currentDate = currentTime.format('YYYY-MM-DD')
+    let currentDate //= currentTime.format('YYYY-MM-DD')
     let stockSymbol = ''
     let stockName = ''
 
@@ -29,12 +29,14 @@ $('#makeApiCall').on('click', _ => {
 
       let stockData = {}
       $.getJSON(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=MF50LI0Q6H9V0VWV`, data => {
+        
+        currentDate = {date: data['Meta Data']['3. Last Refreshed']}
         stockData = {
           symbol: data['Meta Data']['2. Symbol'],
-          open: data['Time Series (Daily)'][currentDate]['1. open'],
-          high: data['Time Series (Daily)'][currentDate]['2. high'],
-          low: data['Time Series (Daily)'][currentDate]['3. low'],
-          close: data['Time Series (Daily)'][currentDate]['4. close']
+          open: data['Time Series (Daily)'][currentDate.date]['1. open'],
+          high: data['Time Series (Daily)'][currentDate.date]['2. high'],
+          low: data['Time Series (Daily)'][currentDate.date]['3. low'],
+          close: data['Time Series (Daily)'][currentDate.date]['4. close']
         }
 
         const cryptoData = {}
