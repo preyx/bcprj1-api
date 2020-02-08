@@ -17,8 +17,8 @@ $('#makeApiCall').on('click', _ => {
     $('#searchBox').removeClass('fail-input-color')
     console.log('Searched Stock: ' + $('#searchBox').val())
     const stockSearch = $('#searchBox').val()
-    const currentTime = moment()
-    let currentDate //= currentTime.format('YYYY-MM-DD')
+    // const currentTime = moment()
+    let currentDate
     let stockSymbol = ''
     let stockName = ''
 
