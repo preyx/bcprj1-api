@@ -1,93 +1,68 @@
 const ciData = JSON.parse(localStorage.getItem('crypit')) || { crypto: 'BTC', stocks: [] }
 const ciList = ['BTC', 'ETH', 'XRP', 'TUSD', 'BCH', 'EOS', 'ETC', 'LTC', 'TRX', 'BSV', 'BNB', 'LINK']
-$("#searchBox").keyup(function (event) {
-  if (event.keyCode === 13) {
-    $("#makeApiCall").click();
-  }
-});
-$('#makeApiCall').on('click', _ => {
+
+$('#makeApiCall').click(_ => {
   if ($('#searchBox').val().trim() === '') {
     $('#searchBox').attr('placeholder', 'Please Enter Stock Name!')
     $('#searchBox').val('')
     $('#searchBox').addClass('red-input-fail')
     $('#searchBox').addClass('fail-input-color')
-    console.log('Nohing Searched! : ' + $('#searchBox').val())
   } else {
     $('#searchBox').removeClass('red-input-fail')
     $('#searchBox').removeClass('fail-input-color')
-    console.log('Searched Stock: ' + $('#searchBox').val())
     const stockSearch = $('#searchBox').val()
-    // const currentTime = moment()
-    let currentDate
-    let stockSymbol = ''
-    let stockName = ''
-
     $.getJSON(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${stockSearch}&apikey=MF50LI0Q6H9V0VWV`, ({ bestMatches }) => {
-      stockSymbol = bestMatches[0]['1. symbol']
-      stockName = bestMatches[0]['2. name']
-
-
-      let stockData = {}
+      const stockSymbol = bestMatches[0]['1. symbol']
+      const stockName = bestMatches[0]['2. name']
       $.getJSON(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=MF50LI0Q6H9V0VWV`, data => {
-        
-        currentDate = {date: data['Meta Data']['3. Last Refreshed']}
-        stockData = {
+        const currentDate = data['Meta Data']['3. Last Refreshed']
+        const stockData = {
           symbol: data['Meta Data']['2. Symbol'],
-          open: data['Time Series (Daily)'][currentDate.date]['1. open'],
-          high: data['Time Series (Daily)'][currentDate.date]['2. high'],
-          low: data['Time Series (Daily)'][currentDate.date]['3. low'],
-          close: data['Time Series (Daily)'][currentDate.date]['4. close']
+          open: data['Time Series (Daily)'][currentDate]['1. open'],
+          high: data['Time Series (Daily)'][currentDate]['2. high'],
+          low: data['Time Series (Daily)'][currentDate]['3. low'],
+          close: data['Time Series (Daily)'][currentDate]['4. close']
         }
-
-        const cryptoData = {}
-        cryptoName = $('#cryptoSelector').val()
+        const cryptoName = $('#cryptoSelector').val()
         $.getJSON(`https://min-api.cryptocompare.com/data/price?fsym=${cryptoName}&tsyms=USD&api_key=0190464490a4a78ca623e065b1766167f8810d127b191c98a032bb28a9aa1604`)
-          .then(({ cryptyName, USD }) => {
-            const dollarValue = USD
-            const coinType = dollarValue
+          .then(({ USD }) => {
             let decimals = 0
-            let convertHigh = stockData.high / coinType
-            let convertLow = stockData.low / coinType
-            let convertClose = stockData.close / coinType
             let multiplier = 1
-            let currVal = parseFloat(stockData.close).toFixed(2)
-            var cardValueCurrent = currVal
-
+            let convertHigh = stockData.high / USD
+            let convertLow = stockData.low / USD
+            let convertClose = stockData.close / USD
+            const currVal = parseFloat(stockData.close).toFixed(2)
             while (convertClose < 100000) {
               convertHigh *= 10
               convertLow *= 10
               convertClose *= 10
               decimals++
             }
-
             while (decimals > 0) {
               multiplier *= 10
               decimals--
             }
-
             multiplier = Math.round(multiplier)
             convertHigh = Math.round(convertHigh) / multiplier
             convertLow = Math.round(convertLow) / multiplier
             convertClose = Math.round(convertClose) / multiplier
-
-
             $('#stockCard').html(`
-                <div class="card card-back">
-                  <div class="card-content white-text">
-                  <span class="right right-align">
-                    <h5 class="no-margin">${convertClose} ${cryptoName}</h5>
-                    <p>High: ${convertHigh} ${cryptoName}</p>
-                    <p>Low: ${convertLow} ${cryptoName}</p>
-                  </span>
-                  <span class="card-title">${stockSymbol}</span>
-                  <p><b>${stockName}</b></p>
-                  <p><b>Current Price: $${cardValueCurrent}</b></p>
-                </div>
-                ${isWatched(stockSymbol) ? '' : `<div class="card-action">
-                <a href="#" id="${stockSymbol}" class="right add-btn"><i class="material-icons">add_circle</i><a><br/>
-                </div>`}
-              </div>
-            `)
+<div class="card card-back">
+<div class="card-content white-text">
+<span class="right right-align">
+<h5 class="no-margin">${convertClose} ${cryptoName}</h5>
+<p>High: ${convertHigh} ${cryptoName}</p>
+<p>Low: ${convertLow} ${cryptoName}</p>
+</span>
+<span class="card-title">${stockSymbol}</span>
+<p>${stockName}</p>
+<p>Current Price: $${currVal}</p>
+</div>
+<div class="card-action">
+<a href="#" id="${stockSymbol}" class="right add-btn"><i class="material-icons">add_circle</i></a><br/>
+</div>
+</div>
+`)
           })
       })
     })
@@ -97,6 +72,12 @@ $('#makeApiCall').on('click', _ => {
 $('#cryptoSelector').change(event => {
   ciData.crypto = event.target.value
   localStorage.setItem('crypit', JSON.stringify(ciData))
+})
+
+$('#searchBox').keyup(event => {
+  if (event.keyCode === 13) {
+    $('#makeApiCall').click()
+  }
 })
 
 $(document).click(event => {
@@ -116,18 +97,14 @@ const updateWatch = _ => {
   $('#watchlist').html('')
   ciData.stocks.forEach(element => {
     $('#watchlist').append(`
-      <div class="card side-back">
-        <div class="card-content">
-          <a href="#" id=${element} class="right minus-btn"><i class="material-icons">remove_circle</i></a>
-          <h5 class="no-margin"><a href="#" class="ci-watchlist" id="${element}">${element}</a></h5>
-        </div>
-      </div>
-    `)
+<div class="card side-back">
+<div class="card-content">
+<a href="#" id=${element} class="right minus-btn"><i class="material-icons">remove_circle</i></a>
+<h5 class="no-margin"><a href="#" class="ci-watchlist" id="${element}">${element}</a></h5>
+</div>
+</div>
+`)
   })
-}
-
-const isWatched = x => {
-  return ciData.stocks.includes(x)
 }
 
 const addWatch = x => {
@@ -147,7 +124,8 @@ const delWatch = x => {
   }
 }
 
-for (i = 0; i < ciList.length; i++) {
+// INITIALIZE PAGE
+for (let i = 0; i < ciList.length; i++) {
   $('#cryptoSelector').append(`<option id="${ciList[i]}" value="${ciList[i]}"${(ciList[i] === ciData.crypto) ? ' selected' : ''}>${ciList[i]}</option>`)
 }
 updateWatch()
