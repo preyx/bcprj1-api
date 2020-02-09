@@ -1,6 +1,10 @@
 const ciData = JSON.parse(localStorage.getItem('crypit')) || { crypto: 'BTC', stocks: [] }
 const ciList = ['BTC', 'ETH', 'XRP', 'TUSD', 'BCH', 'EOS', 'ETC', 'LTC', 'TRX', 'BSV', 'BNB', 'LINK']
-
+$("#searchBox").keyup(function (event) {
+  if (event.keyCode === 13) {
+    $("#makeApiCall").click();
+  }
+});
 $('#makeApiCall').on('click', _ => {
   if ($('#searchBox').val().trim() === '') {
     $('#searchBox').attr('placeholder', 'Please Enter Stock Name!')
@@ -13,8 +17,8 @@ $('#makeApiCall').on('click', _ => {
     $('#searchBox').removeClass('fail-input-color')
     console.log('Searched Stock: ' + $('#searchBox').val())
     const stockSearch = $('#searchBox').val()
-    const currentTime = moment()
-    const currentDate = currentTime.format('YYYY-MM-DD')
+    // const currentTime = moment()
+    let currentDate
     let stockSymbol = ''
     let stockName = ''
 
@@ -25,12 +29,14 @@ $('#makeApiCall').on('click', _ => {
 
       let stockData = {}
       $.getJSON(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=MF50LI0Q6H9V0VWV`, data => {
+        
+        currentDate = {date: data['Meta Data']['3. Last Refreshed']}
         stockData = {
           symbol: data['Meta Data']['2. Symbol'],
-          open: data['Time Series (Daily)'][currentDate]['1. open'],
-          high: data['Time Series (Daily)'][currentDate]['2. high'],
-          low: data['Time Series (Daily)'][currentDate]['3. low'],
-          close: data['Time Series (Daily)'][currentDate]['4. close']
+          open: data['Time Series (Daily)'][currentDate.date]['1. open'],
+          high: data['Time Series (Daily)'][currentDate.date]['2. high'],
+          low: data['Time Series (Daily)'][currentDate.date]['3. low'],
+          close: data['Time Series (Daily)'][currentDate.date]['4. close']
         }
 
         const cryptoData = {}
@@ -110,13 +116,13 @@ const updateWatch = _ => {
   $('#watchlist').html('')
   ciData.stocks.forEach(element => {
     $('#watchlist').append(`
-<div class="card side-back">
-  <div class="card-content">
-    <a href="#" id=${element} class="right minus-btn"><i class="material-icons">remove_circle</i></a>
-    <h5 class="no-margin"><a href="#" class="ci-watchlist" id="${element}">${element}</a></h5>
-  </div>
-</div>
-`)
+      <div class="card side-back">
+        <div class="card-content">
+          <a href="#" id=${element} class="right minus-btn"><i class="material-icons">remove_circle</i></a>
+          <h5 class="no-margin"><a href="#" class="ci-watchlist" id="${element}">${element}</a></h5>
+        </div>
+      </div>
+    `)
   })
 }
 
