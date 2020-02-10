@@ -15,7 +15,7 @@ $('#makeApiCall').click(_ => {
       const stockSymbol = bestMatches[0]['1. symbol']
       const stockName = bestMatches[0]['2. name']
       $.getJSON(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockSymbol}&apikey=MF50LI0Q6H9V0VWV`, data => {
-        const currentDate = data['Meta Data']['3. Last Refreshed']
+        const currentDate = data['Meta Data']['3. Last Refreshed'].slice(0, 10)
         const stockData = {
           symbol: data['Meta Data']['2. Symbol'],
           open: data['Time Series (Daily)'][currentDate]['1. open'],
